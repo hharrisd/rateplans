@@ -57,7 +57,5 @@ def get_dataframes(rateplan_pahts: str):
     logging.info(f'Dataframes concatenados')
     df_concat.drop_duplicates(inplace=True, subset=['Codigo'], keep='last')
     logging.info(f'Duplicados eliminados')
-    result = df_concat.to_json(orient="records")
-    logging.info(f'Salida JSON generada')
 
-    return json.loads(result)
+    return df_concat
