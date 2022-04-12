@@ -44,7 +44,7 @@ async def prepare_rates_download(
 
     df = file_manager.get_dataframes(directory)
 
-    df.to_excel(f"{directory}/{rate_plan_name}.xlsx", index=False, header=True)
+    df.to_excel(f"{directory}/{rate_plan_name}.xls", index=False, header=True)
 
-    return FileResponse(f"{directory}/{rate_plan_name}.xlsx", media_type='application/octet-stream',
-                        filename=f"{rate_plan_name}.xlsx")
+    return FileResponse(f"{directory}/{rate_plan_name}.xls", media_type='application/octet-stream',
+                        filename=f"{rate_plan_name}.xls")

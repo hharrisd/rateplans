@@ -16,7 +16,8 @@ def validate_type(files: list):
     errors = []
     if files:
         for file in files:
-            if file.content_type not in ["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"]:
+            if file.content_type not in ["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                         "application/vnd.ms-excel"]:
                 errors.append(f"El archivo {file.filename} tiene un tipo de documento inválido")
     else:
         errors.append(f"Almenos un archivo es requerido")
@@ -45,7 +46,7 @@ def save_file(directory: str, filename: str, content):
 
 
 def get_dataframes(rateplan_pahts: str):
-    excel_files = glob.glob(os.path.join(rateplan_pahts, "*.xlsx"))
+    excel_files = glob.glob(os.path.join(rateplan_pahts, "*.xls*"))
     dataframes = []
 
     for excel in excel_files:
