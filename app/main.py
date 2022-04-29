@@ -1,5 +1,4 @@
 import json
-import logging
 from fastapi import FastAPI, UploadFile, File, Body
 from starlette.responses import FileResponse
 
@@ -14,7 +13,6 @@ async def prepare_rates(
         rate_plan_name: str = Body(..., description="Nombre de la tarifa resultante"),
         files: List[UploadFile] = File(..., description="Lista de archivos (.xlsx) a adjuntar")
 ):
-    # return {"filenames": [file.filename for file in files]}
     file_manager.validate_type(files)
     directory = file_manager.make_directory(rate_plan_name)
     for file in files:
